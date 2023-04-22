@@ -56,4 +56,13 @@ class PlayerService(private val database: Database) {
             Users.deleteWhere { Users.id.eq(id) }
         }
     }
+
+    suspend fun getTable(): List<Player> {
+        return dbQuery {
+            Users.selectAll().orderBy(Users.score, SortOrder.DESC)
+                .map { Player(it[Users.name], it[Users.score]) }
+
+        }
+    }
+
 }

@@ -23,6 +23,14 @@ fun Application.configureDatabases() {
             val id = userService.create(player)
             call.respond(HttpStatusCode.Created, id)
         }
+
+        // Get all players
+        get("/allPlayers") {
+            val players = userService.getTable()
+            call.respond(HttpStatusCode.OK, players)
+        }
+
+
         // Read player
         get("/players/{id}") {
             val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
