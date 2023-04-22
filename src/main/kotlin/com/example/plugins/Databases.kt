@@ -31,28 +31,28 @@ fun Application.configureDatabases() {
         }
 
 
-        // Read player
-        get("/players/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
-            val player = userService.read(id)
-            if (player != null) {
-                call.respond(HttpStatusCode.OK, player)
-            } else {
-                call.respond(HttpStatusCode.NotFound)
-            }
-        }
-        // Update player
-        put("/players/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
-            val player = call.receive<Player>()
-            userService.update(id, player)
-            call.respond(HttpStatusCode.OK)
-        }
-        // Delete player
-        delete("/players/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
-            userService.delete(id)
-            call.respond(HttpStatusCode.OK)
-        }
+//        // Read player
+//        get("/players/{id}") {
+//            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
+//            val player = userService.read(id)
+//            if (player != null) {
+//                call.respond(HttpStatusCode.OK, player)
+//            } else {
+//                call.respond(HttpStatusCode.NotFound)
+//            }
+//        }
+//        // Update player
+//        put("/players/{id}") {
+//            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
+//            val player = call.receive<Player>()
+//            userService.update(id, player)
+//            call.respond(HttpStatusCode.OK)
+//        }
+//        // Delete player
+//        delete("/players/{id}") {
+//            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
+//            userService.delete(id)
+//            call.respond(HttpStatusCode.OK)
+//        }
     }
 }

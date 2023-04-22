@@ -34,28 +34,7 @@ class PlayerService(private val database: Database) {
         }[Users.id]
     }
 
-    suspend fun read(id: Int): Player? {
-        return dbQuery {
-            Users.select { Users.id eq id }
-                .map { Player(it[Users.name], it[Users.score]) }
-                .singleOrNull()
-        }
-    }
 
-    suspend fun update(id: Int, player: Player) {
-        dbQuery {
-            Users.update({ Users.id eq id }) {
-                it[name] = player.name
-                it[score] = player.score
-            }
-        }
-    }
-
-    suspend fun delete(id: Int) {
-        dbQuery {
-            Users.deleteWhere { Users.id.eq(id) }
-        }
-    }
 
     suspend fun getTable(): List<Player> {
         return dbQuery {
@@ -64,5 +43,29 @@ class PlayerService(private val database: Database) {
 
         }
     }
+
+    //    suspend fun read(id: Int): Player? {
+//        return dbQuery {
+//            Users.select { Users.id eq id }
+//                .map { Player(it[Users.name], it[Users.score]) }
+//                .singleOrNull()
+//        }
+//    }
+//
+//    suspend fun update(id: Int, player: Player) {
+//        dbQuery {
+//            Users.update({ Users.id eq id }) {
+//                it[name] = player.name
+//                it[score] = player.score
+//            }
+//        }
+//    }
+//
+//    suspend fun delete(id: Int) {
+//        dbQuery {
+//            Users.deleteWhere { Users.id.eq(id) }
+//        }
+//    }
+
 
 }
