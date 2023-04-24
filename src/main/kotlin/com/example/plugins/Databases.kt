@@ -30,6 +30,13 @@ fun Application.configureDatabases() {
             call.respond(HttpStatusCode.OK, players)
         }
 
+        get("/allPlayersHTMLTable") {
+            val players = userService.getTable()
+            call.respondText(playersToHTMLString(players), ContentType.Text.Html)
+        }
+
+
+
 
 //        // Read player
 //        get("/players/{id}") {

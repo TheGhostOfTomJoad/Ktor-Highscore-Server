@@ -13,5 +13,6 @@ fun main() {
 fun Application.module() {
     configureSerialization()
     configureDatabases()
-    configureRouting()
+    //configureRouting()
+    //showHTMLTable(listOf(Player("max",100)))
 }
